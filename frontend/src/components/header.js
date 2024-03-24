@@ -30,25 +30,40 @@ export default function Header() {
             </nav>
         </div>
 
-        <div className='d-flex row ps-2'>
-            <nav className='navbar navbar-light text-white bg-success fs-5 py-0'>
-                <div className='col-sm-2 btn-group'>
-                    <button type="button" class="btn btn-primary">Home</button>
-                </div>
-                <div className='col-sm-4 btn-group'>
-                    <button type="button" class="btn btn-primary">Goal Catogary</button>
-                </div>
-                <div className='col-sm-2 btn-group'>
-                <button type="button" class="btn btn-primary">Commiunty</button>
-                </div>
-                <div className='col-sm-2 btn-group'>
-                <button type="button" class="btn btn-primary">About Us</button>
-                </div>
-                <div className='col-sm-2 btn-group'>
-                <button type="button" class="btn btn-primary">Contact Us</button>
-                </div>
-            </nav>
+        <nav class="navbar navbar-expand-sm navbar-light" id="neubar">
+      <div class="container">
+    
+        <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ms-auto ">
+            
+                <li class="nav-item">
+                    <a class="nav-link mx-2" href="http://localhost:3001" className="dropdown-item">Home</a>
+                </li>
+            
+                <li class="nav-item dropdown">
+                <a class="nav-link mx-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Goal Catogories
+                </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Blog</a></li>
+                        <li><a class="dropdown-item" href="#">About Us</a></li>
+                        <li><a class="dropdown-item" href="#">Contact us</a></li>
+                    </ul>
+                </li>
+            
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="#">Commiunity</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="#">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="#">Contact Us</a>
+            </li>
+          </ul>
         </div>
+      </div>
+    </nav>
     </div>
   )
 }

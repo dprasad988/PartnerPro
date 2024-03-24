@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../components/header'
 import welcome from '../images/welcome.png';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
   return (
@@ -18,7 +19,9 @@ export default function Home() {
           <img src={welcome} className="welcome img-fluid mx-auto d-block card-img" alt="welcome" />
           <div className='card-img-overlay ps-5 mt-5'>
             <p class="bg-white fw-bold wel_msg">MAKE A PROFILE</p>
+            <Link to= '/signup'>
             <button className='btn btn-outline-warning btn-lg fw-bold fs-2'>Click here</button>
+            </Link>
           </div>
       </div>
     </div>
