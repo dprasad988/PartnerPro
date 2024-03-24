@@ -4,7 +4,7 @@ const conn = createConnection({
     host : "localhost",
     user : "root",
     password : "",
-    database : "partnerpro"
+    database : "partnerpro",
 })
 
 conn.connect(function(err) {

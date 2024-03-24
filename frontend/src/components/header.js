@@ -9,7 +9,9 @@ export default function Header() {
         <div className='d-flex m-0 row'>
             <nav className='navbar navbar-light bg-dark'>
             <div className='col-sm-2'>
+              <Link to="/">
                 <img src={pplogo} className="logo" alt="PartnerPro" />
+              </Link>
             </div>
             <div className='col-sm-8'> 
                 <form className='d-flex'>
@@ -37,7 +39,7 @@ export default function Header() {
           <ul class="navbar-nav ms-auto ">
             
                 <li class="nav-item">
-                    <a class="nav-link mx-2" href="http://localhost:3001" className="dropdown-item">Home</a>
+                    <a class="nav-link mx-2" href="http://localhost:3000" className="dropdown-item">Home</a>
                 </li>
             
                 <li class="nav-item dropdown">
@@ -45,9 +47,15 @@ export default function Header() {
                 Goal Catogories
                 </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Blog</a></li>
-                        <li><a class="dropdown-item" href="#">About Us</a></li>
-                        <li><a class="dropdown-item" href="#">Contact us</a></li>
+                        <li><a class="dropdown-item" href="#">Community Projects</a></li>
+                        <li><a class="dropdown-item" href="#">Social Causes</a></li>
+                        <li><a class="dropdown-item" href="#">Envionmental Action</a></li>
+                        <li><a class="dropdown-item" href="#">Business Ventures </a></li>
+                        <li><a class="dropdown-item" href="#">Learning Groups </a></li>
+                        <li><a class="dropdown-item" href="#">Arts and Culture</a></li>
+                        <li><a class="dropdown-item" href="#">Health and Wellness</a></li>
+                        <li><a class="dropdown-item" href="#">Technology Projects</a></li>
+                        <li><a class="dropdown-item" href="#">Other</a></li>
                     </ul>
                 </li>
             

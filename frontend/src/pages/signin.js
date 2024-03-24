@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../components/header'
 import axios from 'axios'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function Signin() {
 
@@ -9,6 +10,8 @@ export default function Signin() {
     email: '',
     password: ''
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,17 +24,32 @@ export default function Signin() {
     e.preventDefault();
     // Perform validation if needed
 
-    // Send POST request to backend for sign-in
-    axios.post('http://localhost:5000/signin', formData)
-      .then(res => {
-        console.log(res);
-        // Navigate to user's profile page or dashboard upon successful sign-in
-        // Replace '/profile' with the actual route to the user's profile page
-        // or dashboard
-        //navigate('/profile');
-      })
-      .catch(err => console.log(err));
-  };
+     // Send POST request to sign-in endpoint
+     axios.post('http://localhost:5005/signin', formData)
+     .then(res => {
+       const { token } = res.data;
+       // Store JWT token securely (e.g., in local storage)
+       localStorage.setItem('jwtToken', token);
+       console.log('JWT token stored:', token);
+       // Navigate to user's profile page or dashboard upon successful sign-in
+       navigate('/profile');
+     })
+     .catch(err => {
+      // Handle errors here
+      if (err.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.error("Server responded with status code:", err.response.status);
+        console.error("Error message from server:", err.response.data);
+      } else if (err.request) {
+        // The request was made but no response was received
+        console.error("No response received from server");
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error("Error while sending request:", err.message);
+      }
+    });
+ };
   
   return (
     <div>

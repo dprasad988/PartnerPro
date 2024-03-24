@@ -42,7 +42,7 @@ export default function Signup() {
             return;
         }
     
-        axios.post('http://localhost:5000/signup', formData) // Send POST request to backend
+        axios.post('http://localhost:5005/signup', formData) // Send POST request to backend
         .then(res => {
             console.log(res); // Log response data to the console
             if (res.status === 200) {
@@ -57,47 +57,133 @@ export default function Signup() {
   return (
     <div>
         <Header/>
-        <div className='container  '>
-            <div className='row justify-content-center '>
-      <form className='row-6 border border-4 col-6 px-4 border-dark py-2 mt-2 ' onSubmit={handleSubmit}>
-        <h1 className=' m-0 text-center '>Sign Up Here</h1>
-            <div className='col-md-12'>
-                <label className='form-label'>Name</label>
-                <input className='form-control w-5' name='name' type='text' placeholder='Enter Your Name' value={formData.name} onChange={handleChange}></input>
+        <div className="container d-flex justify-content-center align-items-center mt-2 ">
+  <div className="card shadow-lg rounded-3 p-4">
+    <div className="card-body">
+      <h1 className="card-title text-center mb-4">Sign Up</h1>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label htmlFor="name" className="form-label">
+            Name
+          </label>
+          <input
+            type="text"
+            className="form-control rounded-pill"
+            id="name"
+            name="name"
+            placeholder="Enter your name"
+            value={formData.name}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="email" className="form-label">
+            Email
+          </label>
+          <input
+            type="email"
+            className="form-control rounded-pill"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="contact" className="form-label">
+            Contact Number
+          </label>
+          <input
+            type="text"
+            className="form-control rounded-pill"
+            id="contact"
+            name="contact"
+            placeholder="Enter your mobile number"
+            value={formData.contact}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Gender</label>
+          <div>
+            <div className="form-check form-check-inline">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="gender"
+                id="male"
+                value="Male"
+                onChange={handleChange}
+              />
+              <label className="form-check-label" htmlFor="male">
+                Male
+              </label>
             </div>
-            <div className='col-md-12'>
-                <label className='form-label'>Email</label>
-                <input className='form-control' name='email' type='email' placeholder='Enter Your Email' value={formData.email} onChange={handleChange}></input>
+            <div className="form-check form-check-inline">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="gender"
+                id="female"
+                value="Female"
+                onChange={handleChange}
+              />
+              <label className="form-check-label" htmlFor="female">
+                Female
+              </label>
             </div>
-            <div className='col-md-12'>
-                <label className='form-label'>Contact Number</label>
-                <input className='form-control' name='contact' type='text' placeholder='Enter Your Mobile Number' value={formData.contact} onChange={handleChange}></input>
-            </div>
-            <div className='col-md-12'>
-                <label className='form-label'>Gender</label><br/>
-                <input className='me-2' type="radio" name='gender' value="Male" onChange={handleChange}/>
-                <label className='me-3' for="male">Male</label>
-                <input className='me-2' type="radio" name='gender' value="Female" onChange={handleChange}/>
-                <label className='me-3' for="female">Female</label>
-            </div>
-            <div className='col-md-12'>
-                <label className='form-label'>What's Your Goal </label>
-                <input className='form-control' name='goal' type='text' placeholder='Enter Your Goal' value={formData.goal} onChange={handleChange}></input>
-            </div>
-            <div className='col-md-12'>
-                <label className='form-label'>Password</label>
-                <input className='form-control' name='pass' type='password' placeholder='Enter Your Password' value={formData.pass} onChange={handleChange}></input>
-            </div>
-            <div className='col-md-12'>
-                <label className='form-label'>Re-Enter Password</label>
-                <input className='form-control' name='confpass' type='password' placeholder='Re-Enter Your Password' value={formData.confpass} onChange={handleChange}></input>
-            </div>
-            <div className='col-md-12 mt-2'>
-                <button className='btn btn-primary'>Submit</button>
-            </div>
+          </div>
+        </div>
+        <div className="mb-3">
+          <label htmlFor="goal" className="form-label">
+            What's Your Goal
+          </label>
+          <input
+            type="text"
+            className="form-control rounded-pill"
+            id="goal"
+            name="goal"
+            placeholder="Enter your goal"
+            value={formData.goal}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="pass" className="form-label">
+            Password
+          </label>
+          <input
+            type="password"
+            className="form-control rounded-pill"
+            id="pass"
+            name="pass"
+            placeholder="Enter your password"
+            value={formData.pass}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="confpass" className="form-label">
+            Re-Enter Password
+          </label>
+          <input
+            type="password"
+            className="form-control rounded-pill"
+            id="confpass"
+            name="confpass"
+            placeholder="Re-enter your password"
+            value={formData.confpass}
+            onChange={handleChange}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary btn-lg w-100 rounded-pill">
+          Submit
+        </button>
       </form>
-      </div>
-      </div>
+    </div>
+  </div>
+</div>
     </div>
   )
 }
