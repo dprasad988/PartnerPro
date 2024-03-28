@@ -24,35 +24,39 @@ app.post('/logout', (req, res) => {
     return res.status(401).json({ message: 'Token missing' });
   }
 
-  // Add the token to the blacklist
-  tokenBlacklist.push(token);
+  // Remove the token from the blacklist
+  const index = tokenBlacklist.indexOf(token);
+  if (index !== -1) {
+    tokenBlacklist.splice(index, 1);
+  }
 
   res.status(200).json({ message: 'Logout successful' });
 });
 
 // Middleware to authenticate requests using JWT tokens
-    const authenticateJWT = (req, res, next) => {
-    const token = req.headers.authorization;
-  
-    if (!token) {
-      return res.sendStatus(401); // Unauthorized
+const authenticateJWT = (req, res, next) => {
+  const token = req.headers.authorization;
+
+  if (!token) {
+    return res.sendStatus(401); // Unauthorized
+  }
+
+  // Check if the token is blacklisted
+  if (tokenBlacklist.includes(token)) {
+    return res.sendStatus(401); // Unauthorized
+  }
+
+  jwt.verify(token, secretKey, (err, decoded) => {
+    if (err) {
+      return res.sendStatus(403); // Forbidden
     }
-  
-    jwt.verify(token, secretKey, (err, decoded) => {
-      if (err) {
-        return res.sendStatus(403); // Forbidden
-      }
-  
-      // Check if req object is defined and has user property
-      if (!req) {
-        return res.sendStatus(500); // Internal Server Error
-      }
-  
-      // Set decoded token to req.user
-      req.user = decoded;
-      next();
-    });
-  };
+
+    // Set decoded token to req.user
+    req.user = decoded;
+    next();
+  });
+};
+
   
 
 app.post('/signup', (req, res) => {
